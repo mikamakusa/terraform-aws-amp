@@ -56,3 +56,21 @@ variable "workspace" {
   description = <<EOF
     EOF
 }
+
+variable "cluster" {
+  type = any
+  default = []
+  description = "EKS Cluster variable to define a K8s cluster on AWS"
+}
+
+variable "log_group" {
+  type = any
+  default = []
+  description = "Log Group on AWS Cloudwatch"
+}
+
+variable "key" {
+  type = any
+  default = []
+  description = "KMS Key from AWS KMS managed service"
+}

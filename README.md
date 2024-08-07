@@ -1,8 +1,8 @@
 ## Requirements
 
-| Name | Version    |
-|------|------------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | \>= 5.55.0 |
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.55.0 |
 
 ## Providers
 
@@ -14,7 +14,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloudwatch"></a> [cloudwatch](#module\_cloudwatch) | git@github.com:mikamakusa/terraform-aws-cloudwatch | 1.0.2 |
+| <a name="module_cloudwatch"></a> [cloudwatch](#module\_cloudwatch) | git@github.com:mikamakusa/terraform-aws-cloudwatch | 1.0.3 |
 | <a name="module_eks"></a> [eks](#module\_eks) | git@github.com:mikamakusa/terraform-aws-eks.git | 1.0.1 |
 | <a name="module_kms"></a> [kms](#module\_kms) | git@github.com:mikamakusa/terraform-aws-kms.git | 1.0.1 |
 
@@ -32,6 +32,9 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alert_manager_definition"></a> [alert\_manager\_definition](#input\_alert\_manager\_definition) | n/a | <pre>list(object({<br>    id           = number<br>    definition   = string<br>    workspace_id = optional(number)<br>  }))</pre> | `[]` | no |
+| <a name="input_cluster"></a> [cluster](#input\_cluster) | EKS Cluster variable to define a K8s cluster on AWS | `any` | `[]` | no |
+| <a name="input_key"></a> [key](#input\_key) | KMS Key from AWS KMS managed service | `any` | `[]` | no |
+| <a name="input_log_group"></a> [log\_group](#input\_log\_group) | Log Group on AWS Cloudwatch | `any` | `[]` | no |
 | <a name="input_rule_group_namespace"></a> [rule\_group\_namespace](#input\_rule\_group\_namespace) | n/a | <pre>list(object({<br>    id           = number<br>    name         = string<br>    workspace_id = optional(number)<br>    data         = string<br>  }))</pre> | `[]` | no |
 | <a name="input_scraper"></a> [scraper](#input\_scraper) | n/a | <pre>list(object({<br>    id                   = number<br>    scrape_configuration = string<br>    alias                = optional(string)<br>    destination = list(object({<br>      amp = list(object({<br>        workspace_id = number<br>      }))<br>    }))<br>    source = optional(list(object({<br>      eks = optional(list(object({<br>        cluster_id = optional(number)<br>      })))<br>    })))<br>  }))</pre> | `[]` | no |
 | <a name="input_workspace"></a> [workspace](#input\_workspace) | n/a | <pre>list(object({<br>    id         = number<br>    alias      = optional(string)<br>    kms_key_id = optional(number)<br>    tags       = optional(map(string))<br>    logging_configuration = optional(list(object({<br>      log_group_id = optional(number)<br>    })))<br>  }))</pre> | `[]` | no |
